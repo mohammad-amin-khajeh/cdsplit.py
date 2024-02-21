@@ -91,9 +91,10 @@ def counting(format: str) -> int:
 
 
 def cue_exists():
-    if not glob('*.cue'):
-        print('the cuesheet was not found!')
+    if not glob("*.cue"):
+        print("the cuesheet was not found!")
         quit(1)
+
 
 def genre_fetcher(count: int) -> str:
     if count != 1:
