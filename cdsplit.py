@@ -51,7 +51,7 @@ parser.add_argument(
 
 parser.add_argument(
     "input",
-    nargs="*",
+    nargs="+",
     metavar="",
     help="specify the base directory of the operation",
 )
