@@ -176,7 +176,7 @@ def converter(amount: int, genre: str, year: str = "0", album_dir: str = "") -> 
 
 
 def cleaner():
-    garbage = glob("*.flac")
+    garbage = set(glob("*.flac") + glob("*.cue"))
     for file in garbage:
         remove(file)
 
