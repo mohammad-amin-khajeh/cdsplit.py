@@ -105,15 +105,17 @@ def genre_fetcher(count: int) -> str:
     cue_file = cue_file[0]
     with open(cue_file) as cue_sheet:
         contents = cue_sheet.readlines()
-        for line in contents:
-            if "rem genre" in line.lower():
-                genre = line.split('"')[1].lower()
-                verification = input(f"is '{genre}' the correct genre? [Y/n] ")
-                if verification.lower() == ("y" or "" or "yes"):
-                    return genre
-                else:
-                    return input("What's the album's genre? ")
-        else:
+        try:
+            for line in contents:
+                if "rem genre" in line.lower():
+                    genre = line.split('"')[1].lower()
+                    verification = input(f"is '{genre}' the correct genre? [Y/n] ")
+                    if verification.lower() == ("y" or "" or "yes"):
+                        return genre
+                    else:
+                        return input("What's the album's genre? ")
+        # if the 'REM GENRE' line exists but it doesn't have double quotes execute the exception
+        except IndexError:
             return input("What's the album's genre? ")
 
 
